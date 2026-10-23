@@ -9,6 +9,9 @@ Every number below comes from code in this repo (`python run_all.py`). The test 
 
 > **Résumé (FR)** — Modèle de probabilité de défaut de bout en bout sur 30 000 clients de cartes de crédit. Il compare une grille de score réglementaire (WoE + régression logistique) à des modèles de machine learning interprétables (EBM, LightGBM à contraintes monotones). Il comprend aussi calibration, seuil d'octroi par profit maximal (EMP), échelle de notation et perte attendue, une zone « à valider par un analyste » avec garantie statistique (prédiction conforme), un audit d'équité, un suivi de stabilité (PSI), des motifs de décision en français et une application Streamlit pour le chargé de clientèle.
 
+![Loan-officer demo](reports/figures/app_demo.png)
+*Loan-officer demo (Streamlit): PD, rating grade, scorecard points, expected loss, triage decision and reasons in French.*
+
 ![ROC](reports/figures/roc_test.png)
 
 ## Results (held-out test set, n = 6,000, default rate 22.1%)

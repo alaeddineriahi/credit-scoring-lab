@@ -14,6 +14,8 @@ scikit-learn==1.9.1
 scipy==1.18.1
 shap==0.54.1
 streamlit==1.66.1
+# optional: app screenshot (src/screenshot_app.py, uses the installed Chrome)
+# playwright
 # optional research extension (CPU build of torch recommended):
 # torch==2.14.1
 # tabpfn==9.2.0
