@@ -1,0 +1,62 @@
+{
+  "Scorecard (WoE + logit)": {
+    "auc": 0.7709,
+    "gini": 0.5419,
+    "ks": 0.4222,
+    "brier": 0.1362,
+    "log_loss": 0.4352,
+    "auc_ci95": [
+      0.7566,
+      0.7853
+    ]
+  },
+  "EBM": {
+    "auc": 0.7886,
+    "gini": 0.5771,
+    "ks": 0.4502,
+    "brier": 0.1319,
+    "log_loss": 0.4224,
+    "auc_ci95": [
+      0.7748,
+      0.803
+    ],
+    "auc_gain_vs_scorecard": [
+      0.0176,
+      0.0105,
+      0.0244
+    ]
+  },
+  "LightGBM monotone": {
+    "auc": 0.7917,
+    "gini": 0.5834,
+    "ks": 0.4502,
+    "brier": 0.1313,
+    "log_loss": 0.4202,
+    "auc_ci95": [
+      0.778,
+      0.8056
+    ],
+    "auc_gain_vs_scorecard": [
+      0.0207,
+      0.0136,
+      0.0276
+    ]
+  },
+  "_meta": {
+    "n_train": 18000,
+    "n_valid": 6000,
+    "n_test": 6000,
+    "default_rate_test": 0.2212,
+    "lgbm_params": {
+      "learning_rate": 0.021354969392279266,
+      "num_leaves": 18,
+      "min_child_samples": 119,
+      "feature_fraction": 0.5239816524067482,
+      "bagging_fraction": 0.6746510329930426,
+      "lambda_l2": 0.047679931458580176,
+      "n_estimators": 248,
+      "cv_auc": 0.7891
+    },
+    "n_features": 42
+  }
+}

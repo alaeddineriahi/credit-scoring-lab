@@ -1,0 +1,218 @@
+{
+  "champion": "LightGBM monotone",
+  "valid_auc": {
+    "Scorecard (WoE + logit)": 0.7633,
+    "EBM": 0.7798,
+    "LightGBM monotone": 0.7809
+  },
+  "emp_test": {
+    "Scorecard (WoE + logit)": {
+      "emp_per_unit_lent": 0.0229,
+      "expected_reject_share": 0.0862
+    },
+    "EBM": {
+      "emp_per_unit_lent": 0.0244,
+      "expected_reject_share": 0.0931
+    },
+    "LightGBM monotone": {
+      "emp_per_unit_lent": 0.0245,
+      "expected_reject_share": 0.0931
+    }
+  },
+  "decision": {
+    "cutoff_pd": 0.5939,
+    "approval_rate_test": 0.9062,
+    "default_rate_approved": 0.1687,
+    "default_rate_rejected": 0.7282
+  },
+  "master_scale": [
+    {
+      "grade": "A",
+      "n": 15,
+      "pd_mean": 0.0273,
+      "observed_dr": 0.0,
+      "ead_sum": 1065796,
+      "el_sum": 13196.5729
+    },
+    {
+      "grade": "B",
+      "n": 689,
+      "pd_mean": 0.0479,
+      "observed_dr": 0.0522,
+      "ead_sum": 47201399,
+      "el_sum": 1010047.6049
+    },
+    {
+      "grade": "C",
+      "n": 1064,
+      "pd_mean": 0.079,
+      "observed_dr": 0.0686,
+      "ead_sum": 61410077,
+      "el_sum": 2170825.6667
+    },
+    {
+      "grade": "D",
+      "n": 2086,
+      "pd_mean": 0.1482,
+      "observed_dr": 0.1438,
+      "ead_sum": 105883485,
+      "el_sum": 6924483.9903
+    },
+    {
+      "grade": "E",
+      "n": 990,
+      "pd_mean": 0.2604,
+      "observed_dr": 0.2475,
+      "ead_sum": 27182107,
+      "el_sum": 3126524.5176
+    },
+    {
+      "grade": "F",
+      "n": 522,
+      "pd_mean": 0.4199,
+      "observed_dr": 0.4234,
+      "ead_sum": 16740504,
+      "el_sum": 3276549.1981
+    },
+    {
+      "grade": "G",
+      "n": 634,
+      "pd_mean": 0.6867,
+      "observed_dr": 0.7129,
+      "ead_sum": 41545921,
+      "el_sum": 12713746.6746
+    }
+  ],
+  "conformal": {
+    "alpha": 0.1,
+    "thresholds": {
+      "0": 0.35180785340425824,
+      "1": 0.8933689186332755
+    },
+    "coverage_good": 0.899,
+    "coverage_default": 0.8945,
+    "share_good": 0.3463,
+    "default_rate_good": 0.0674,
+    "share_default": 0.1898,
+    "default_rate_default": 0.5856,
+    "share_refer": 0.4638,
+    "default_rate_refer": 0.1868
+  },
+  "triage": {
+    "auto_approve": {
+      "share": 0.3463,
+      "default_rate": 0.0674
+    },
+    "auto_decline": {
+      "share": 0.0938,
+      "default_rate": 0.7282
+    },
+    "analyst_review": {
+      "share": 0.5598,
+      "default_rate": 0.2313
+    }
+  },
+  "fairness": {
+    "sex": {
+      "by_group": [
+        {
+          "sex": "femme",
+          "approval_rate": 0.9088,
+          "false_decline_rate": 0.0303,
+          "missed_default_rate": 0.6768
+        },
+        {
+          "sex": "homme",
+          "approval_rate": 0.9022,
+          "false_decline_rate": 0.0367,
+          "missed_default_rate": 0.7098
+        }
+      ],
+      "demographic_parity_diff": 0.0066,
+      "equalized_odds_diff": 0.033,
+      "auc_by_group": {
+        "femme": 0.7958,
+        "homme": 0.7841
+      }
+    },
+    "age": {
+      "by_group": [
+        {
+          "age": "30-44",
+          "approval_rate": 0.9214,
+          "false_decline_rate": 0.024,
+          "missed_default_rate": 0.7134
+        },
+        {
+          "age": "45+",
+          "approval_rate": 0.8877,
+          "false_decline_rate": 0.0422,
+          "missed_default_rate": 0.6884
+        },
+        {
+          "age": "<30",
+          "approval_rate": 0.8936,
+          "false_decline_rate": 0.0412,
+          "missed_default_rate": 0.6603
+        }
+      ],
+      "demographic_parity_diff": 0.0337,
+      "equalized_odds_diff": 0.053,
+      "auc_by_group": {
+        "<30": 0.7923,
+        "30-44": 0.7949,
+        "45+": 0.7823
+      }
+    },
+    "marriage": {
+      "by_group": [
+        {
+          "marriage": "autre",
+          "approval_rate": 0.9315,
+          "false_decline_rate": 0.0339,
+          "missed_default_rate": 0.7857
+        },
+        {
+          "marriage": "célibataire",
+          "approval_rate": 0.9093,
+          "false_decline_rate": 0.0327,
+          "missed_default_rate": 0.6868
+        },
+        {
+          "marriage": "marié(e)",
+          "approval_rate": 0.9019,
+          "false_decline_rate": 0.0327,
+          "missed_default_rate": 0.6933
+        }
+      ],
+      "demographic_parity_diff": 0.0296,
+      "equalized_odds_diff": 0.0989,
+      "auc_by_group": {
+        "célibataire": 0.7951,
+        "marié(e)": 0.7898,
+        "autre": 0.7663
+      }
+    }
+  },
+  "psi_train_vs_test": 0.0007,
+  "shap_top10": {
+    "max_delay_3m": 0.2327,
+    "delay_1": 0.1999,
+    "max_delay_6m": 0.144,
+    "months_since_delay": 0.1066,
+    "paid_1": 0.0898,
+    "limit_bal": 0.0873,
+    "util_max": 0.0724,
+    "paid_2": 0.0663,
+    "bill_1": 0.0581,
+    "paid_3": 0.0564
+  },
+  "example_reason_codes": {
+    "pd": 0.8471,
+    "reasons": [
+      "Retard de paiement sur le dernier mois",
+      "Retard maximal élevé sur les 3 derniers mois",
+      "Retard maximal élevé sur les 6 derniers mois"
+    ]
+  }
+}
