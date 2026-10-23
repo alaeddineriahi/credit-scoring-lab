@@ -1,0 +1,58 @@
+{
+  "sweep_validation": [
+    {
+      "context_size": 500,
+      "strategy": "uniform",
+      "valid_auc_mean": 0.7638,
+      "valid_auc_std": 0.001
+    },
+    {
+      "context_size": 500,
+      "strategy": "balanced",
+      "valid_auc_mean": 0.775,
+      "valid_auc_std": 0.0008
+    },
+    {
+      "context_size": 1000,
+      "strategy": "uniform",
+      "valid_auc_mean": 0.7685,
+      "valid_auc_std": 0.0019
+    },
+    {
+      "context_size": 1000,
+      "strategy": "balanced",
+      "valid_auc_mean": 0.778,
+      "valid_auc_std": 0.0012
+    },
+    {
+      "context_size": 2000,
+      "strategy": "uniform",
+      "valid_auc_mean": 0.7737,
+      "valid_auc_std": 0.0029
+    },
+    {
+      "context_size": 2000,
+      "strategy": "balanced",
+      "valid_auc_mean": 0.7827,
+      "valid_auc_std": 0.005
+    }
+  ],
+  "best": {
+    "context_size": 2000,
+    "strategy": "balanced",
+    "valid_auc_mean": 0.7827,
+    "valid_auc_std": 0.005
+  },
+  "test_metrics_best": {
+    "auc": 0.7857,
+    "gini": 0.5714,
+    "ks": 0.4335,
+    "brier": 0.1826,
+    "log_loss": 0.5604,
+    "auc_ci95": [
+      0.7715,
+      0.8
+    ]
+  },
+  "note": "Brier/log-loss are not comparable for balanced contexts (shifted base rate); compare AUC/Gini/KS."
+}

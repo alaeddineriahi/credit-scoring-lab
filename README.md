@@ -64,7 +64,20 @@ Sex, marital status and age are **never model inputs**. They're used only to aud
 ## Research extension: tabular foundation model (TabPFN)
 TabPFN ([Hollmann et al., *Nature* 2025](https://www.nature.com/articles/s41586-024-08328-6)) predicts by reading a "context" of labelled examples in a single forward pass, with no training. [Tanna et al. (May 2026)](https://arxiv.org/abs/2605.18635) report that on Home Credit and Lending Club, **how the context is sampled matters more than which foundation model is used**. This experiment tests whether that holds here. See [`reports/tabpfn_results.json`](reports/tabpfn_results.json) and the section below.
 
-*Results pending: the experiment (TabPFN v2, CPU, contexts of 500/1,000/2,000 examples, uniform vs balanced sampling, 2 seeds) is still running.*
+**Setup:** TabPFN v2, CPU. Context sizes of 500, 1,000 and 2,000 examples drawn from the training set, with uniform or class-balanced sampling, 2 seeds each. Configurations are compared on a fixed stratified validation sample (n = 1,500), and only the best one is scored on test.
+
+| Context size | Uniform sampling (valid AUC) | Balanced sampling (valid AUC) | Gain |
+|---|---|---|---|
+| 500 | 0.764 | **0.775** | +0.011 |
+| 1,000 | 0.769 | **0.778** | +0.010 |
+| 2,000 | 0.774 | **0.783** | +0.009 |
+
+- **Finding:** balanced contexts beat uniform contexts at every size, and a balanced context of 1,000 examples already beats a uniform one of 2,000. The direction matches what Tanna et al. report on Home Credit and Lending Club.
+- **Best configuration on test** (2,000 balanced examples): AUC **0.786** [0.772–0.800], Gini 0.571, KS 0.434. That beats the scorecard (0.771) and comes close to LightGBM (0.792), even though TabPFN reads only 2,000 examples while LightGBM trains on 18,000, and TabPFN does no training or tuning.
+- **Caveats:**
+  - Only 2 seeds and a CPU budget (contexts ≤ 2,000).
+  - A balanced context shifts the predicted base rate, so Brier score and log-loss aren't comparable unless the model is recalibrated.
+  - Newer TabPFN versions (2.5+) need a licence token and were not tested.
 
 ## What's engineered
 - **SQL feature engineering (DuckDB):** the 6 monthly snapshots are reshaped into one row per customer per month. SQL window functions and aggregates then compute worst and recent delinquency, months since last delay, delinquency trend, utilisation level/peak/slope, payment-to-previous-bill ratios, missed payments and bill growth.
